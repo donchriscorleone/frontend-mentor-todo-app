@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./index.css">
+  <script src="./index.js" defer></script>
+  <title>Frontend Mentor | Todo app</title>
+</head>
+<body class="body dark-theme">
+  <header class="header">
+    <nav class="nav">
+      <h1>Todo</h1>
+      <button class="btn btn-sr btn-switch">
+        Switcher
+      </button>
+    </nav>
+  </header>
+  <main class="todo-container">
+    <div class="todo-item todo-header">
+      <div class="checkbox-container">
+        <input type="checkbox" name="checkbox" id="checkbox">
+        <label for="checkbox">Checkbox</label>
+      </div>
+      <div class="input-container">
+        <label for="input-todo">Create a new todo</label>
+        <input type="text" id="input-todo" placeholder="Create a new todo..">
+      </div>
+    </div>
+    <ul class="todo-list">
+      <li class="todo-item todo-item-action">
+        <span class="todo-text">5 items left</span>
+        <div class="filters">
+          <button class="btn btn-text btn-control btn-active">
+            All
+           </button>
+           <button class="btn btn-text btn-control">
+            Active
+           </button>
+           <button class="btn btn-text btn-control">
+            Completed
+           </button>
+        </div>
+        <button class="btn btn-text btn-clear">Clear Completed</button>
+      </li>
+    </ul>
+    <div class="todo-item todo-footer">
+      <button class="btn btn-text btn-control btn-active">
+        All
+       </button>
+       <button class="btn btn-text btn-control">
+        Active
+       </button>
+       <button class="btn btn-text btn-control">
+        Completed
+       </button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a href="https://www.instagram.com/christopheriilajom" target="_blank">Coded by Christopher</a>
+  </footer>
+
+</body>
+</html>

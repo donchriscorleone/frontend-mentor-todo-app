@@ -1,0 +1,474 @@
+:root {
+    --ff-jo: 'Josefin Sans', sans-serif;
+    --bright-blue: hsl(220, 98%, 61%);
+    --check-bg: hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+    --theme-1-clr-1: hsl(0, 0%, 98%);
+    --theme-1-clr-2: hsl(236, 33%, 92%);
+    --theme-1-clr-3: hsl(233, 11%, 84%);
+    --theme-1-clr-4: hsl(236, 9%, 61%);
+    --theme-1-clr-5: hsl(235, 19%, 35%);
+
+    --theme-2-clr-1: hsl(235, 21%, 11%);
+    --theme-2-clr-2: hsl(235, 24%, 19%);
+    --theme-2-clr-3: hsl(234, 39%, 85%);
+    --theme-2-clr-3-hover: hsl(236, 33%, 92%);
+    --theme-2-clr-4: hsl(234, 11%, 52%);
+    --theme-2-clr-5: hsl(233, 14%, 35%);
+    --theme-2-clr-6: hsl(237, 14%, 26%);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--ff-jo);
+    transition: color .5s, background-color .5s;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+/* Checkbox */
+input[type='checkbox'] {
+    position: absolute;
+    left: -9000px;
+}
+
+input[type='checkbox'] + label {
+    position: relative;
+    display: flex;
+    font-size: 0;
+}
+
+input[type='checkbox'] + label::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity .5s;
+    opacity: .5;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+input[type='checkbox'] + label:hover::before {
+   border-color: var(--bright-blue);
+}
+
+input[type='checkbox']:checked + label::before {
+    opacity: 1;
+    background-image: url('./images/icon-check.svg'), linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    outline: none;
+}
+
+/* Buttons */
+
+.btn {
+    outline: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn-sr {
+    font-size: 0;
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.btn-switch {
+    background-image: url('./images/icon-moon.svg');
+}
+
+.btn-close {
+    background-image: url('./images/icon-cross.svg');
+    width: 15px;
+    height: 15px;
+}
+
+.btn-clear {
+    font-size: 1.25rem;
+}
+
+.btn-control {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Todo Card */
+
+.todo-list {
+    list-style: none;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: var(--theme-1-clr-5);
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 1.75rem 1.75rem;
+    /* border-bottom: .2px solid var(--theme-1-clr-4); */
+}
+
+.todo-item .todo-text.todo-done {
+    text-decoration: line-through;
+}
+
+.todo-list .todo-item:first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+.todo-list .todo-item:last-child {
+    border-bottom: 0;
+    border-radius: 0 0 5px 5px;
+}
+
+.todo-item .btn-close {
+    margin-left: auto;
+}
+
+.todo-item:not(.todo-item-action):hover {
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 800px) {
+    .todo-item .btn-close {
+        opacity: 0;
+    }
+
+    .todo-item:not(.todo-item-action):hover .btn-close {
+        opacity: 1;
+        transition: opacity .5s;
+    }
+}
+
+.todo-item .input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.todo-item.todo-item-action {
+    justify-content: space-between;
+}
+
+.todo-item-action .filters {
+    display: none;
+}
+
+@media screen and (min-width: 800px) {
+    .todo-item-action .filters {
+        display: flex;
+        column-gap: 1rem;
+    }
+
+    .todo-item-action .filters .btn-control {
+        font-size: 1.21rem;
+    }
+    
+}
+
+.input-container label {
+    font-size: 0;
+    position: absolute;
+    left: -9000px;
+}
+
+.input-container input {
+    border: none;
+    outline: 0;
+    background-color: transparent;
+    padding: .5rem;
+    width: 100%;
+}
+
+/* Todo container */
+
+.todo-container {
+    margin: 0 auto;
+    display: grid;
+    row-gap: 2rem;
+    position: relative;
+}
+
+.todo-header {
+    border: initial;
+    background-color: var(--theme-1-clr-5);
+    border-radius: 5px;
+}
+
+.todo-footer {
+    justify-content: center;
+    border: initial;
+    background-color: var(--theme-1-clr-5);
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 800px) {
+    .todo-item {
+        padding: 2rem;
+    }
+
+    .todo-item .todo-text {
+        font-size: 1.4rem;
+    }
+
+    .todo-footer {
+        display: none;
+    }
+}
+
+.todo-footer .btn-control {
+    font-size: 1.21rem;
+}
+
+.todo-container::after {
+    content: 'Drag and drop to reorder list (Not implemented)';
+    position: absolute;
+    bottom: -38px;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-size: 1.35rem;
+}
+
+/* Header */
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 20rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header::after {
+    content: '';
+    height: calc(100vh - 20rem);
+    position: absolute;
+    /* bottom: calc(20rem - 100vh); */
+    bottom: -467px;
+    width: 100%;
+    z-index: -1;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.5rem 3.5rem;
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+.nav h1 {
+    color: white;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    font-size: 2.3rem;
+}
+
+@media screen and (min-width: 800px) {
+    .header {
+        height: 30rem;
+        padding-top: 3rem;
+    }
+    
+    .header::after {
+        /* bottom: calc(20rem - 100vh); */
+        bottom: calc(25rem - 100vh);
+    }
+    
+    .nav {
+        padding-inline: 0;
+        max-width: 450px;
+    }
+}
+
+
+/* Body */
+body {
+    position: relative;
+    overflow-y: hidden;
+}
+
+main {
+    position: absolute;
+    top: -100px;
+    box-shadow: 0 0 15px 5px rgb(0 0 0 / 20%);
+    max-width: 340px;
+    background-color: rgba(0, 0, 0, 0.01);
+}
+
+@media screen and (min-width: 800px) {
+    main {
+        top: -180px;
+        max-width: 450px;
+    }
+}
+
+/* Dark theme */
+body.dark-theme .header {
+    background-image: url('./images/bg-mobile-dark.jpg');
+}
+
+body.dark-theme .header::after {
+    background-color: var(--theme-2-clr-1);
+}
+
+@media screen and (min-width: 800px) {
+    body.dark-theme .header {
+        background-image: url('./images/bg-desktop-dark.jpg');
+    }
+}
+
+.body.dark-theme .btn-switch {
+    background-image: url('./images/icon-sun.svg');
+}
+
+body.dark-theme .todo-header, body.dark-theme .todo-item {
+    background-color: var(--theme-2-clr-2);
+}
+
+body.dark-theme .todo-item:not(.todo-item-action) .todo-text {
+    color: var(--theme-2-clr-3);
+}
+
+body.dark-theme .todo-item-action .todo-text, body.dark-theme .todo-item-action .btn-clear {
+    color: var(--theme-2-clr-4);
+}
+
+body.dark-theme .todo-item:not(.todo-item-action) .todo-text.todo-done {
+    color: var(--theme-2-clr-4);
+}
+
+body.dark-theme .todo-item-action .btn:not(.btn-active):hover {
+    color: var(--theme-2-clr-3);
+}
+
+body.dark-theme .btn-control {
+    color: var(--theme-2-clr-5)
+}
+
+body.dark-theme .btn-control:hover {
+    color: var(--theme-2-clr-3);
+}
+
+body.dark-theme .btn-control.btn-active {
+    color: var(--bright-blue);
+}
+
+body.dark-theme .todo-container::after {
+    color: var(--theme-2-clr-5);
+}
+
+body.dark-theme .todo-header input {
+    color: var(--theme-2-clr-3);
+}
+
+/* Light theme */
+body.light-theme .header {
+    background-image: url('./images/bg-mobile-light.jpg');
+}
+
+body.light-theme .header::after {
+    background-color: var(--theme-1-clr-1);
+}
+
+@media screen and (min-width: 800px) {
+    body.light-theme .header {
+        background-image: url('./images/bg-desktop-light.jpg');
+    }
+}
+
+.body.light-theme .btn-switch {
+    background-image: url('./images/icon-moon.svg');
+}
+
+body.light-theme .todo-header, body.light-theme .todo-item {
+    background-color: var(--theme-1-clr-2);
+}
+
+body.light-theme .todo-item:not(.todo-item-action) .todo-text {
+    color: var(--theme-1-clr-5);
+}
+
+body.light-theme .todo-item-action .todo-text, body.light-theme .todo-item-action .btn-clear {
+    color: var(--theme-1-clr-4);
+}
+
+body.light-theme .todo-item:not(.todo-item-action) .todo-text.todo-done {
+    color: var(--theme-1-clr-4);
+}
+
+body.light-theme .todo-item-action .btn:not(.btn-active):hover {
+    color: var(--theme-1-clr-5);
+}
+
+body.light-theme .btn-control {
+    color: var(--theme-1-clr-4)
+}
+
+body.light-theme .btn-control:hover {
+    color: var(--theme-1-clr-5);
+}
+
+body.light-theme .btn-control.btn-active {
+    color: var(--bright-blue);
+}
+
+body.light-theme .todo-container::after {
+    color: var(--theme-1-clr-5);
+}
+
+body.light-theme .todo-header input {
+    color: var(--theme-1-clr-5);
+}
+
+.footer {
+    position: absolute;
+    bottom: 40px;
+    text-align: center;
+    left: 0;
+    right: 0;
+}
+
+@media screen and (min-width: 800px) {
+    .footer {
+        bottom: 100px;
+    }
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+body.dark-theme .footer a {
+    color: var(--theme-2-clr-3);
+}
+
+body.dark-theme .footer a:hover {
+    color: var(--theme-2-clr-5);
+}
+
+body.light-theme .footer a {
+    color: var(--theme-1-clr-5);
+}
+
+body.light-theme .footer a:hover {
+    color: var(--theme-1-clr-4);
+}
